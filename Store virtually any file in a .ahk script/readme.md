@@ -24,3 +24,19 @@ How to use!:
 6. Answer the questions on how you want to save the script
 7. Simply include the code via #include or pasting it into your script
 8. Call the function with Extract_*name* and the path/name of the file you want it to save as and it will recreate the file
+
+we need a script to extract the embedded code  ( save as Extract.ahk )
+```ahk
+#Include HelloWorld_Embedded.ahk
+
+SplashTextOn 200, 200, Extracting, Please Wait...
+Extract_HelloWorld_Embedded( A_ScriptDir "\HelloWorld_Extracted.ahk" )
+while !FileExist( A_ScriptDir "\HelloWorld_Extracted.ahk" )
+    Sleep 100
+Sleep 1000
+ControlSetText Static1, Done!, Extracting
+Sleep 1000
+SplashTextOff
+ExitApp
+```
+Run Extract.ahk and if all went well you should now have HelloWorld_Extracted.ahk in your script dir. 
